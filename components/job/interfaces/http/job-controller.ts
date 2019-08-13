@@ -1,5 +1,4 @@
 import express = require('express');
-import JobStatus from "../../domain/job-status";
 import {JobManager} from "../../application/job-manager";
 
 export class JobController {
@@ -16,8 +15,7 @@ export class JobController {
 
   private postJob = (req: express.Request, res: express.Response) => {
     try {
-      if (!Object.values(JobStatus).includes(req.body.status)) throw new Error();
-      this.jobManager.createJob(req.body.id, req.body.name, req.body.status);
+      this.jobManager.createJob({id: req.body.id, name: req.body.name, status: req.body.status});
       res.status(201);
     } catch (e) {
       res.status(400);
@@ -26,8 +24,13 @@ export class JobController {
   };
 
   private getJob = (req: express.Request, res: express.Response) => {
-    const job = this.jobManager.findJob(req.params.jobId);
-    res.send(job);
+    try {
+      const job = this.jobManager.findJob(parseInt(req.params.jobId));
+      res.send(job);
+    } catch (e) {
+      res.status(400);
+      res.send();
+    }
   };
 
   public subscribe(app: express.Application) {
