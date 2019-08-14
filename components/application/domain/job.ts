@@ -9,7 +9,7 @@ export default class Job {
 
   constructor(jobId: number, status: string, applications: Application[]) {
     this._jobId = jobId;
-    if (!JobStatus[status]) throw new Error('status_type_not_allowed');
+    if (!JobStatus[status]) throw new Error('invalid_job_status');
     this._status = JobStatus[status];
     this._applications = applications;
   }
