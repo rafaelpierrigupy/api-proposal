@@ -15,7 +15,10 @@ export class JobController {
 
   private postJob = (req: express.Request, res: express.Response) => {
     try {
-      this.jobManager.createJob({id: req.body.id, name: req.body.name, status: req.body.status});
+      const name = req.body.name;
+      const status = req.body.status;
+      if (!name || !status) throw new Error();
+      this.jobManager.createJob({name: name, status: status});
       res.status(201);
     } catch (e) {
       res.status(400);

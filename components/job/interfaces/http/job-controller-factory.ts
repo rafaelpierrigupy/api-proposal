@@ -1,5 +1,5 @@
 import {JobController} from "./job-controller";
 import {JobManager} from "../../application/job-manager";
-import {JobRepository} from "../../infrastructure/job-repository";
+import {JobRepositoryImpl} from "../../infrastructure/job-repository-impl";
 
-export default { build: () => new JobController(new JobManager(new JobRepository())) }
+export default { build: () => new JobController(new JobManager(new JobRepositoryImpl())) }

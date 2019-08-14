@@ -1,11 +1,12 @@
 import Job from "../domain/job";
-import {JobRepository} from "../infrastructure/job-repository";
+import JobRepository from "../domain/job-repository";
 
-type JobType = {
-  id: number;
+type NewJobType = {
   name: string;
   status: string;
 }
+
+type JobType = { id: number } & NewJobType;
 
 export class JobManager {
   private jobRepository: JobRepository;
@@ -15,18 +16,19 @@ export class JobManager {
   }
 
   findJobs(): JobType[] {
-    return this.jobRepository.findJobs().map(job => ({ id: job.id, name: job.name, status: job.status }));
+    return this.jobRepository.findJobs().map(job => this.toJobType(job));
   }
 
-  createJob(data: JobType) {
-    const job = this.jobRepository.findJob(data.id);
-    if (job) throw new Error();
-    this.jobRepository.saveJob(new Job(data.id, data.name, data.status));
+  createJob(data: NewJobType) {
+    const nextId = this.jobRepository.findNextJobId();
+    this.jobRepository.saveJob(new Job(nextId, data.name, data.status));
   }
 
   findJob(jobId: number): JobType {
     const job = this.jobRepository.findJob(jobId);
     if (!job) throw new Error();
-    return { id: job.id, name: job.name, status: job.status };
+    return this.toJobType(job);
   }
+
+  private toJobType = (job: Job): JobType => ({ id: job.id, name: job.name, status: job.status })
 }
