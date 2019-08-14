@@ -29,7 +29,7 @@ export class CandidateManager {
 
   findCandidate(candidateId: number): CandidateType {
     const candidate = this.candidateRepository.findCandidate(candidateId);
-    if (!candidate) throw new Error();
+    if (!candidate) throw new Error('candidate_not_found');
     return this.toCandidateType(candidate);
   }
 

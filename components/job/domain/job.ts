@@ -8,7 +8,7 @@ export default class Job {
   constructor(id: number, name: string, status: string) {
     this.id = id;
     this.name = name;
-    if (!JobStatus[status]) throw new Error();
+    if (!JobStatus[status]) throw new Error('job_status_not_allowed');
     this.status = JobStatus[status];
   }
 }

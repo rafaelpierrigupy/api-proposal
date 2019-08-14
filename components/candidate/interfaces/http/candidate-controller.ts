@@ -18,7 +18,7 @@ export class CandidateController {
       const name: string = req.body.name;
       const age: number = req.body.age;
       const skillLevel: number = req.body.skillLevel;
-      if (!name || !age || !skillLevel) throw new Error();
+      if (!name || !age || !skillLevel) throw new Error('could_not_parse_request');
       this.candidateManager.createCandidate({name, age, skillLevel});
       res.status(201);
     } catch (e) {

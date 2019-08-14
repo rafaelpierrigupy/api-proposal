@@ -26,7 +26,7 @@ export class JobManager {
 
   findJob(jobId: number): JobType {
     const job = this.jobRepository.findJob(jobId);
-    if (!job) throw new Error();
+    if (!job) throw new Error('could_not_find_job');
     return this.toJobType(job);
   }
 

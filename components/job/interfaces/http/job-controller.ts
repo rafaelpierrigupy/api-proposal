@@ -17,7 +17,7 @@ export class JobController {
     try {
       const name = req.body.name;
       const status = req.body.status;
-      if (!name || !status) throw new Error();
+      if (!name || !status) throw new Error('could_not_parse_request');
       this.jobManager.createJob({name: name, status: status});
       res.status(201);
     } catch (e) {
