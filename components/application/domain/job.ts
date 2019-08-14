@@ -3,15 +3,19 @@ import Application from "./application";
 import Candidate from "./candidate";
 
 export default class Job {
-  private _jobId: number;
+  private _id: number;
   private _status: JobStatus;
   private _applications: Application[];
 
-  constructor(jobId: number, status: string, applications: Application[]) {
-    this._jobId = jobId;
+  constructor(id: number, status: string, applications: Application[]) {
+    this._id = id;
     if (!JobStatus[status]) throw new Error('invalid_job_status');
     this._status = JobStatus[status];
     this._applications = applications;
+  }
+
+  get id(): number {
+    return this._id;
   }
 
   get applications(): Application[] {

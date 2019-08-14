@@ -1,7 +1,8 @@
 import JobRepository from "../domain/job-repository";
 import CandidateRepository from "../domain/candidate-repository";
 
-type ApplicationType = ApplicationIdType & {
+type ApplicationType = {
+  candidateId: number
   skillLevel: number;
 }
 
@@ -24,11 +25,11 @@ export default class ApplicationManager {
     const job = this.jobRepository.findJob(applicationId.jobId);
     const candidate = this.candidateRepository.findCandidate(applicationId.candidateId);
     job.apply(candidate);
+    this.jobRepository.saveJob(job);
   }
 
   private toApplicationType = (job): ApplicationType[] =>
     job.applications.map(application => ({
-      jobId: job.id,
       candidateId: application.candidateId,
       skillLevel: application.skillLevel
     }));
