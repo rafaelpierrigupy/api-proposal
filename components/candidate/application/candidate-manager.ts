@@ -33,7 +33,14 @@ export class CandidateManager {
     return this.toCandidateType(candidate);
   }
 
-  private toCandidateType = candidate => ({
+  updateCandidate(candidateId: number, skillLevel: number) {
+    const candidate = this.candidateRepository.findCandidate(candidateId);
+    if (!candidate) throw new Error('candidate_not_found');
+    candidate.skillLevel = skillLevel;
+    this.candidateRepository.saveCandidate(candidate);
+  }
+
+  private toCandidateType = (candidate: Candidate) => ({
     id: candidate.id,
     name: candidate.name,
     age: candidate.age,

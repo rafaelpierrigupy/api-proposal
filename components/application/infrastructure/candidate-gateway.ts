@@ -10,6 +10,6 @@ export default class CandidateGateway implements CandidateRepository {
       },
     });
     const data = JSON.parse(response.getBody('utf-8'));
-    return new Candidate(data.id, data.skillLevel);
+    return new Candidate(data.candidateId, data.skillLevel);
   }
 }

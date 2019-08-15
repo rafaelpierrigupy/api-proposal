@@ -12,7 +12,10 @@ export class CandidateRepositoryImpl implements CandidateRepository {
   }
 
   saveCandidate(candidate: Candidate) {
-    CandidateRepositoryImpl.candidates.push(candidate);
+    const candidates = CandidateRepositoryImpl.candidates
+        .filter(savedCandidate => savedCandidate.id !== candidate.id);
+    candidates.push(candidate);
+    CandidateRepositoryImpl.candidates = candidates;
   }
 
   findCandidate(candidateId: number): Candidate {

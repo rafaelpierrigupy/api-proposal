@@ -27,6 +27,19 @@ export class CandidateController {
     res.send();
   };
 
+  private patchCandidate = (req: express.Request, res: express.Response) => {
+    try {
+      const candidateId: number = parseInt(req.params.candidateId);
+      const skillLevel: number = req.body.skillLevel;
+      if (!skillLevel) throw new Error('could_not_parse_request');
+      this.candidateManager.updateCandidate(candidateId, skillLevel);
+      res.status(201);
+    } catch (e) {
+      res.status(400);
+    }
+    res.send();
+  };
+
   private getCandidate = (req: express.Request, res: express.Response) => {
     try {
       const candidate = this.candidateManager.findCandidate(parseInt(req.params.candidateId));
@@ -40,6 +53,7 @@ export class CandidateController {
   public subscribe(app: express.Application) {
     app.get('/candidates', this.getCandidates);
     app.post('/candidates', this.postCandidate);
+    app.patch('/candidates/:candidateId', this.patchCandidate);
     app.get('/candidates/:candidateId', this.getCandidate);
   }
 }

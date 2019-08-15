@@ -11,7 +11,7 @@ export default class JobGateway implements JobRepository {
       },
     });
     const data = JSON.parse(response.getBody('utf-8'));
-    return new Job(data.id, data.status, ApplicationRepository.applications.get(jobId));
+    return new Job(data.candidateId, data.status, ApplicationRepository.applications.get(jobId));
   }
 
   saveJob(job: Job) {
