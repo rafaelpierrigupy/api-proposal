@@ -33,4 +33,12 @@ export default class ApplicationManager {
       candidateId: application.candidateId,
       skillLevel: application.skillLevel
     }));
+
+  public updateApplications(candidateId: number, skillLevel: number) {
+    const jobs = this.jobRepository.findJobsByCandidateId(candidateId);
+    jobs.map(job => job.updateSkillLevel(candidateId, skillLevel))
+        .forEach(job => this.jobRepository.saveJob(job));
+
+
+  }
 }

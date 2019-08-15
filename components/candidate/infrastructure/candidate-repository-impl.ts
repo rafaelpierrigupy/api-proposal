@@ -1,17 +1,30 @@
 import Candidate from "../domain/candidate";
 import CandidateRepository from "../domain/candidate-repository";
+import {CandidateProbe} from "../domain/candidate-probe";
 
 export class CandidateRepositoryImpl implements CandidateRepository {
-  private static candidates: Candidate[] = [
-      new Candidate(1, 'Jon Doe', 18, 2),
-      new Candidate(2, 'Jane Doe', 35, 100)
-  ];
+  private static candidates: Candidate[];
+  private _probe: CandidateProbe;
+
+  constructor(probe: CandidateProbe) {
+    this._probe = probe;
+    CandidateRepositoryImpl.candidates = [
+      new Candidate(1, 'Jon Doe', 18, 2, probe),
+      new Candidate(2, 'Jane Doe', 35, 100, probe)
+    ];
+  }
 
   findCandidates(): Candidate[] {
     return CandidateRepositoryImpl.candidates;
   }
 
-  saveCandidate(candidate: Candidate) {
+  saveCandidate(newCandidate: Candidate) {
+    const candidate = new Candidate(
+      newCandidate.id,
+      newCandidate.name,
+      newCandidate.age,
+      newCandidate.skillLevel,
+      this._probe);
     const candidates = CandidateRepositoryImpl.candidates
         .filter(savedCandidate => savedCandidate.id !== candidate.id);
     candidates.push(candidate);

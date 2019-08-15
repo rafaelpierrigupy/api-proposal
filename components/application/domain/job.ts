@@ -30,4 +30,11 @@ export default class Job {
     if (candidateHaveApplyed) throw new Error('candidate_already_applyed');
     this._applications.push(newApplication);
   }
+
+  updateSkillLevel(candidateId: number, skillLevel: number): Job {
+    const application: Application = this._applications
+        .filter(application => application.candidateId === candidateId)[0];
+    application.skillLevel = skillLevel;
+    return this;
+  }
 }

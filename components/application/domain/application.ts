@@ -7,8 +7,13 @@ export default class Application {
     this._skillLevel = skillLevel;
 
   }
+
   get candidateId(): number {
     return this._candidateId;
+  }
+
+  set skillLevel(value: number) {
+    this._skillLevel = value;
   }
 
   get skillLevel(): number {

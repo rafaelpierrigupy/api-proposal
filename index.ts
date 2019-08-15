@@ -10,17 +10,18 @@ app.get('/', (req: express.Request, res: express.Response) => res.send('Hello wo
 
 const apiComponent = process.env['API_COMPONENT'];
 
-let jobComponent;
 let candidateComponent;
+let jobComponent;
 let applicationComponent;
+
+if (apiComponent === 'candidate' || !apiComponent) {
+  candidateComponent = CandidateComponentFactory.build();
+  candidateComponent.controller.subscribe(app);
+}
 
 if (apiComponent === 'job' || !apiComponent) {
   jobComponent = JobComponentFactory.build();
   jobComponent.controller.subscribe(app);
-}
-if (apiComponent === 'candidate' || !apiComponent) {
-  candidateComponent = CandidateComponentFactory.build();
-  candidateComponent.controller.subscribe(app);
 }
 
 applicationComponent = ApplicationComponentFactory.build(

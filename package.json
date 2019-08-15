@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node index.ts",
+    "start": "API_PORT=2525 ts-node index.ts",
     "start-candidates": "API_PORT=2526 API_COMPONENT=candidate ts-node index.ts",
     "start-jobs": "API_PORT=2527 API_COMPONENT=job ts-node index.ts",
     "start-applications": "API_PORT=2525 API_COMPONENT=application ts-node index.ts"
@@ -14,9 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.0",
+    "@types/zeromq": "^4.6.2",
     "express": "^4.17.1",
     "sync-request": "^6.1.0",
     "ts-node": "^8.3.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "zeromq": "^5.1.0"
   }
 }

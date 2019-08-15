@@ -18,4 +18,15 @@ export default class JobRepositoryImpl implements JobRepository {
   saveJob(job: Job) {
     ApplicationRepository.applications.set(job.id, job.applications);
   }
+
+  findJobsByCandidateId(candidateId: number): Job[] {
+    const jobs: Job[] = [];
+    ApplicationRepository.applications.forEach((value, key) => {
+      const hasCandidate = value.some(application => application.candidateId === candidateId);
+      if (hasCandidate) {
+        jobs.push(this.findJob(key));
+      }
+    });
+    return jobs;
+  }
 }
