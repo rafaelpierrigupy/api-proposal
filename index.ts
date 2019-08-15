@@ -8,13 +8,21 @@ app.use(express.json());
 
 app.get('/', (req: express.Request, res: express.Response) => res.send('Hello world'));
 
+const apiComponent = process.env['API_COMPONENT'];
+
 const jobComponent = JobComponentFactory.build();
-jobComponent.controller.subscribe(app);
-
 const candidateComponent = CandidateComponentFactory.build();
-candidateComponent.controller.subscribe(app);
+let applicationComponent;
+if (apiComponent === 'job' || !apiComponent) jobComponent.controller.subscribe(app);
+if (apiComponent === 'candidate' || !apiComponent) candidateComponent.controller.subscribe(app);
+if (apiComponent === 'application') {
+  applicationComponent = ApplicationComponentFactory.build();
+  applicationComponent.controller.subscribe(app);
+}
+if (!apiComponent) {
+  applicationComponent = ApplicationComponentFactory.build(jobComponent.manager, candidateComponent.manager);
+  applicationComponent.controller.subscribe(app);
+}
 
-const applicationComponent = ApplicationComponentFactory.build(jobComponent.manager, candidateComponent.manager);
-applicationComponent.controller.subscribe(app);
 
-app.listen(2525);
+app.listen(process.env['API_PORT']);

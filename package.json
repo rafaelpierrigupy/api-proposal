@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node index.ts",
-    "start-candidates": "ts-node candidates.ts",
-    "start-jobs": "ts-node jobs.ts",
-    "start-applications": "ts-node applications.ts"
+    "start-candidates": "API_PORT=2526 API_COMPONENT=candidate ts-node index.ts",
+    "start-jobs": "API_PORT=2527 API_COMPONENT=job ts-node index.ts",
+    "start-applications": "API_PORT=2525 API_COMPONENT=application ts-node index.ts"
   },
   "author": "",
   "license": "ISC",
