@@ -101,7 +101,11 @@ A maioria dos arquivos deste projeto tem comentários explicando os padrões uti
 ## Referências
 
 [1] https://martinfowler.com/bliki/BoundedContext.html
+
 [2] https://pt.wikipedia.org/wiki/Fa%C3%A7ade
+
 [3] http://wiki.c2.com/?DomainModel
+
 [4] https://martinfowler.com/articles/domain-oriented-observability.html
+
 [5] https://deviq.com/repository-pattern/
