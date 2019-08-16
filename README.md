@@ -90,13 +90,13 @@ Neste diretório ficam os detalhes de implementação dos serviços de Domínio,
 
 ## Como utilizar este projeto?
 
-A maioria dos arquivos deste projeto tem comentários explicando os padrões utilizados e a motivação por de trás deles. Além disso você também pode encontrar referências para se aprofundar nos padrões apresentados aqui.
+Este projeto pode ser utilizado para estudar padrões de desacoplamento entre componentes. A maioria dos arquivos deste projeto tem comentários explicando os padrões utilizados e a motivação por de trás deles. Além disso você também pode encontrar referências para se aprofundar nos padrões apresentados aqui.
 
 ## Desafios
 
  - Esta implementação não tem nenhum teste. Você consegue pensar em uma boa estratégia para garantir a qualidade em futuras mudanças?
- - A decisão quanto à estratégia de persistência foi deferida até o último momento responsável e agora você precisa implementá-la. Faça a mudança e reflita: ela foi fácil? Porquê?
- - Quando o nível de habilidade de um candidato muda, as aplicações mudam, ainda que a vaga tenha sido fechada. Que solução você daria para este problema? Implemente.
+ - A decisão quanto à estratégia de persistência foi deferida até o último momento responsável e agora você precisa implementá-la. Faça a mudança e reflita: ela foi fácil? Por quê?
+ - Quando o Nível de Habilidade de um Candidato muda, as Aplicações mudam, ainda que a Vaga tenha sido fechada. Que solução você daria para este problema? Implemente.
  
 ## Referências
 
