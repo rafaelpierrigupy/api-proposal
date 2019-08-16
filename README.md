@@ -102,7 +102,7 @@ Este projeto pode ser utilizado para estudar padrões de desacoplamento entre Co
 
 [1] https://martinfowler.com/bliki/BoundedContext.html
 
-[2] https://martinfowler.com/articles/microservice-testing/#testing-component-introduction
+[2] https://en.wikipedia.org/wiki/Component-based_software_engineering
 
 [3] https://pt.wikipedia.org/wiki/Fa%C3%A7ade
 
