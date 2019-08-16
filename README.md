@@ -48,7 +48,7 @@ BODY: {
 
 ## Arquitetura
 
-Este projeto simula uma implementação de uma API Rest transicionando de um padrão arquitetônico monolítico para microserviços. Seu objetivo é apresentar uma série de padrões de projeto para alcançar o baixo acoplamento entre componentes e permitir a substituição da invocação de métodos por requisições HTTP. Note que o intensivo uso de padrões de projeto e camadas de indireção só se justifica pelo caráter didático desta implementação. Em um contexto real, a quantidade de regras de negócio e endpoints é muito pequena para justificar a complexidade do código que está aqui.
+Este projeto simula uma implementação de uma API Rest transicionando de um padrão arquitetônico monolítico para microserviços. Seu objetivo é apresentar uma série de padrões de projeto para alcançar o baixo acoplamento entre Componentes [2] e permitir a substituição da invocação de métodos por requisições HTTP. Note que o intensivo uso de padrões de projeto e camadas de indireção só se justifica pelo caráter didático desta implementação. Em um contexto real, a quantidade de regras de negócio e endpoints é muito pequena para justificar a complexidade do código que está aqui.
 
 Sob o aspecto funcional, o objetivo da API é permitir que Candidatos se apliquem à Vagas. Para tanto, a API é dividida três contextos delimitados: `candidates`, responsável por gerenciar as informações dos Candidatos, `jobs`, responsável por gerenciar o cadastro de Vagas e `applications`, responsável por rastrear a Aplicação de um Candidato a uma Vaga.
 
@@ -71,7 +71,7 @@ Existem três diretórios desse tipo, sendo eles os seguintes: `candidate`, `job
 
 #### Application
 
-Este diretório agrupa as classes de serviço, nomeadas com o sufixo `Manager`. Essas Fachadas [2] agrupam as operações oferecidas pela aplicação e abstraem a relação entre o Modelo de Domínio [3] e os mecanismos de persistência.
+Este diretório agrupa as classes de serviço, nomeadas com o sufixo `Manager`. Essas Fachadas [3] agrupam as operações oferecidas pela aplicação e abstraem a relação entre o Modelo de Domínio [4] e os mecanismos de persistência.
 
 
 #### Domain
@@ -86,11 +86,11 @@ Aqui estão as implementações de protocolo. A responsabilidade das classes é 
 
 #### Infrastructure
 
-Neste diretório ficam os detalhes de implementação dos serviços de Domínio, como as Sondas de Domínio [4], responsáveis por notificar eventos de domínio, e Repositórios [5], responsável pela persistência dos dados da aplicação. 
+Neste diretório ficam os detalhes de implementação dos serviços de Domínio, como as Sondas de Domínio [5], responsáveis por notificar eventos de domínio, e Repositórios [6], responsável pela persistência dos dados da aplicação. 
 
 ## Como utilizar este projeto?
 
-Este projeto pode ser utilizado para estudar padrões de desacoplamento entre componentes. A maioria dos arquivos deste projeto tem comentários explicando os padrões utilizados e a motivação por de trás deles. Além disso você também pode encontrar referências para se aprofundar nos padrões apresentados aqui.
+Este projeto pode ser utilizado para estudar padrões de desacoplamento entre Componentes. A maioria dos arquivos deste projeto tem comentários explicando os padrões utilizados e a motivação por de trás deles. Além disso você também pode encontrar referências para se aprofundar nos padrões apresentados aqui.
 
 ## Desafios
 
@@ -102,10 +102,12 @@ Este projeto pode ser utilizado para estudar padrões de desacoplamento entre co
 
 [1] https://martinfowler.com/bliki/BoundedContext.html
 
-[2] https://pt.wikipedia.org/wiki/Fa%C3%A7ade
+[2] https://martinfowler.com/articles/microservice-testing/#testing-component-introduction
 
-[3] http://wiki.c2.com/?DomainModel
+[3] https://pt.wikipedia.org/wiki/Fa%C3%A7ade
 
-[4] https://martinfowler.com/articles/domain-oriented-observability.html
+[4] http://wiki.c2.com/?DomainModel
 
-[5] https://deviq.com/repository-pattern/
+[5] https://martinfowler.com/articles/domain-oriented-observability.html
+
+[6] https://deviq.com/repository-pattern/
