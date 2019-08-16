@@ -11,7 +11,7 @@ npm run start-jobs
 npm run start-applications
 ```
 
-O primeiro comando liga a API inteira, os demais ligam pedaços da API pertinentes aos Contextos Delimitados[1] de candidates, jobs, e applications, respectivamente.
+O primeiro comando liga a API inteira, os demais ligam pedaços da API pertinentes aos Contextos Delimitados [1] de candidates, jobs, e applications, respectivamente.
 
 ## Endpoints
 
@@ -71,7 +71,7 @@ Existem três diretórios desse tipo, sendo eles os seguintes: `candidate`, `job
 
 #### Application
 
-Este diretório agrupa as classes de serviço, nomeadas com o sufixo `Manager`. Essas fachadas[2] agrupam as operações oferecidas pela aplicação e abstraem a relação entre o Modelo de Domínio[3] e os mecanismos de persistência.
+Este diretório agrupa as classes de serviço, nomeadas com o sufixo `Manager`. Essas Fachadas [2] agrupam as operações oferecidas pela aplicação e abstraem a relação entre o Modelo de Domínio [3] e os mecanismos de persistência.
 
 
 #### Domain
@@ -86,7 +86,7 @@ Aqui estão as implementações de protocolo. A responsabilidade das classes é 
 
 #### Infrastructure
 
-Neste diretório ficam os detalhes de implementação dos serviços de Domínio, como as Sondas de Domínio[4], responsáveis por notificar eventos de domínio, e Repositórios[5], responsável pela persistência dos dados da aplicação. 
+Neste diretório ficam os detalhes de implementação dos serviços de Domínio, como as Sondas de Domínio [4], responsáveis por notificar eventos de domínio, e Repositórios [5], responsável pela persistência dos dados da aplicação. 
 
 ## Como utilizar este projeto?
 
